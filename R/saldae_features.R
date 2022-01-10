@@ -7,7 +7,7 @@
 
 
 if_is_date <- function(x = NULL){
-  date_formats <- c("ymd","dmy","mdy","dy","md","dm")
+  date_formats <- c("ymd","dmy","mdy")
   valid_format <- date_formats%>%purrr::map(~ !any(is.na(lubridate::parse_date_time(na.omit(x),.x))))
   return(date_formats[unlist(valid_format)])
 }
@@ -181,7 +181,7 @@ output$target_variable <- renderUI({
 
   tisefka_feature_tables <- reactive({
     req(tisefka_with_features())
-    return(purrr::map(.x =tisefka_with_features(),~DT::datatable(.x,extensions = 'Scroller', options = list(deferRender = TRUE, scrollY = 200, scroller = TRUE)) )%>%
+    return(purrr::map(.x =tisefka_with_features(),~DT::datatable(.x,extensions = c('Scroller','Buttons'), options = list(deferRender = TRUE, scrollY = 200, scroller = TRUE,dom = 'Bfrtip', buttons = c('copy', 'csv', 'excel', 'pdf', 'print')) ))%>%
              stats::setNames(names(tisefka_with_features())))
   })
   #---------------------
@@ -249,17 +249,23 @@ output$target_variable <- renderUI({
     
     
 
-    var_class <- output$tisefka_feature_tables%>%purrr::map(~dlookr::get_class(.x)$class[1])
-    var_class   <-  unlist(var_class)
-    
-    names(output$explaining_variables)  <- var_class
-    
-    
-    if("factor" %in% var_class){
-      ordinal_vars <- output$explaining_variables[var_class=="factor"]
-      names(ordinal_vars)<- NULL
-      output$var_factors  <-  tisefka_tizegzawin()%>%dplyr::select(!!ordinal_vars)%>%purrr::map(~unique(.x))
+    # var_class <- output$tisefka_feature_tables%>%purrr::map(~dlookr::get_class(.x)$class[1])
+    # var_class   <-  unlist(var_class)
+    # 
+    # names(output$explaining_variables)  <- var_class
+    # 
+    # 
+    # if("factor" %in% var_class){
+    #   ordinal_vars <- output$explaining_variables[var_class=="factor"]
+    #   names(ordinal_vars)<- NULL
+    #   output$var_factors  <-  tisefka_tizegzawin()%>%dplyr::select(!!ordinal_vars)%>%purrr::map(~unique(.x))
+    # }
+    factors_vars <- tisefka_tizegzawin()%>%dlookr::diagnose()%>%filter( unique_count < 10)%>%pull(variables)
+    if(length(factors_vars)>0){
+      names(factors_vars) <- factors_vars
+      output$var_factors  <- tisefka_tizegzawin()%>%dplyr::select(!!factors_vars)%>%purrr::map(~unique(.x)%>%sort())
     }
+    
     #-------------------
     return(output)
   })

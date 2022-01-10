@@ -1,6 +1,6 @@
 ### Machine Learning : Modeling 
 
-We distinguish 3 common technique used in machine Learning . 
+We distinguish 3 most common techniques used in machine Learning . 
 
 
 * Regression 

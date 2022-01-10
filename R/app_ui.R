@@ -38,7 +38,7 @@ ML_ui <- function(request) {
                                                          ),tabPanel(title = "Features Engineering",
                                                                     SA_ML_features_UI("SA_ML_features")
                                                                     
-                                                         ),tabPanel(title = "Cleaned Data",
+                                                         ),tabPanel(title = "Augmented Data",
                                                                     DT::DTOutput("SA_dt")
                                                          )
                                   )

@@ -23,9 +23,9 @@ ML_server <- function(input, output,session) {
   
   tisefka_inu <- callModule(module = SA_ML_features_server, id = "SA_ML_features", tisefka = reactive({tisefka()$tisefka_tizegzawin}))
   
-  output$SA_dt <- DT::renderDT({
+  output$SA_dt <- DT::renderDataTable({
     req(tisefka_inu())
-    tisefka_feature_table <- tisefka_inu()$selected_data
+    DT::datatable(tisefka_inu()$selected_data,extensions = c('Scroller','Buttons'), options = list(deferRender = TRUE, dom = 'Bfrtip', buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
   })
   
   ML_trained_results <- callModule(module = SA_ML_preprocessing_server, id = "SA_ML_engine", tisefka = reactive({tisefka_inu()}))

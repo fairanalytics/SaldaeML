@@ -45,14 +45,18 @@ SA_ML_APP_server <- function(input, output, session,tisefka = NULL, create_flag 
   observeEvent(eventExpr=explaining_variables(),handlerExpr= {
     explaining_variables()%>%purrr::imap( ~{
       output_name_app <- paste0("SA_ML_app_", .x)
+      ml_choices <- tisefka()$var_factors[[.x]]
+      
       output[[output_name_app]] <- renderUI({
-        if(.y == "numeric"){
-          shinyWidgets::numericInputIcon(
+        if(length(ml_choices)>0){
+          
+          shinyWidgets::pickerInput(
             inputId = session$ns(output_name_app),
             label = gsub("_"," ",.x),
-            icon = icon("fa-sort-numeric-up"),
-            value = ""
+            selected = NULL,
+            choices = ml_choices
           )
+          
         }else if(.y =="POSIXct"){
           dateInput(
             inputId = session$ns(output_name_app),
@@ -66,14 +70,13 @@ SA_ML_APP_server <- function(input, output, session,tisefka = NULL, create_flag 
             value = Sys.time()
           ) 
         }else{
-          ml_choices <- tisefka()$var_factors[[.x]]
-          shinyWidgets::pickerInput(
+          
+          shinyWidgets::numericInputIcon(
             inputId = session$ns(output_name_app),
             label = gsub("_"," ",.x),
-            selected = NULL,
-            choices = ml_choices
+            icon = icon("fa-sort-numeric-up"),
+            value = ""
           )
-          
         }
       })
      #
@@ -100,7 +103,7 @@ output$ml_app_board <- renderUI({
       shinyWidgets::actionBttn(
         inputId = session$ns("create_ML_app"),
         style = "material-flat",
-        color = "royal",
+        color = "success",
         label = "Create ML App")
     }else{
       NULL
@@ -118,24 +121,25 @@ output$ml_app_UI <- renderUI({
     return(ml_app_UI)
 })
 
-app_ML_output <- eventReactive(input$trigger_ML_app,{
-  explaining_variables()%>%purrr::map(~req(input[[paste0("SA_ML_app_",.x)]]))
-      tisefka_timaynutin <-explaining_variables()%>%purrr::map(~input[[paste0("SA_ML_app_",.x)]])%>%
-        stats::setNames(explaining_variables())
+# app_ML_output <- eventReactive(input$trigger_ML_app,{
+#   explaining_variables()%>%purrr::map(~req(input[[paste0("SA_ML_app_",.x)]]))
+#       tisefka_timaynutin <-explaining_variables()%>%purrr::map(~input[[paste0("SA_ML_app_",.x)]])%>%
+#         stats::setNames(explaining_variables())
+#       tisefka_timaynutin <- do.call(data.frame,tisefka_timaynutin)
+#       tisefka_timaynutin <- SA_ml_feature_generation(tisefka = tisefka_timaynutin)
+#       tisefka_timaynutin <- do.call(dplyr::bind_cols,tisefka_timaynutin)
+#       app_ML_output <- predict(tisefka()$SA_lm_fit,tisefka_timaynutin)
+#       return(app_ML_output)
+# })
 
-      tisefka_timaynutin <- do.call(data.frame,tisefka_timaynutin)
-      tisefka_timaynutin <- SA_ml_feature_generation(tisefka = tisefka_timaynutin)
-      tisefka_timaynutin <- do.call(dplyr::bind_cols,tisefka_timaynutin)
-      app_ML_output <- predict(tisefka()$SA_lm_fit,tisefka_timaynutin)
-      return(app_ML_output)
-})
-
 app_ML_output <- eventReactive(input$trigger_ML_app,{
+  
    
   explaining_variables()%>%purrr::map(~req(input[[paste0("SA_ML_app_",.x)]]))
   tisefka_timaynutin <-explaining_variables()%>%purrr::map(~input[[paste0("SA_ML_app_",.x)]])%>%
     stats::setNames(explaining_variables())
   
+
   time_hms_vars <- names(explaining_variables())
   time_hms_vars <- explaining_variables()[time_hms_vars=="hms"]
 
@@ -147,9 +151,12 @@ app_ML_output <- eventReactive(input$trigger_ML_app,{
       dplyr::mutate_if(is.factor,as.character)
     tisefka_timaynutin[,time_hms_vars]<- hms_input
   }
+  aa <<- tisefka_timaynutin
   tisefka_timaynutin <- SA_ml_feature_generation(tisefka = tisefka_timaynutin)
   tisefka_timaynutin <- do.call(dplyr::bind_cols,tisefka_timaynutin)
-  app_ML_output <- predict(tisefka()$SA_lm_fit,tisefka_timaynutin)
+  bb <<- tisefka_timaynutin
+  cc <<- tisefka()
+  app_ML_output <- predict(tisefka()$SA_lm_fit,new_data = tisefka_timaynutin)
   return(app_ML_output)
 })
 
