@@ -23,6 +23,3 @@ embed the recipe to the engine
 fit the model
 predict for test set
 }
-\details{
-model performances evaluation
-}

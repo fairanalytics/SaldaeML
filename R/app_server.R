@@ -15,9 +15,10 @@
 
 # Define server logic required to draw a histogram
 ML_server <- function(input, output,session) {
-  
+  #initialization
   apputils::use_apputils(force_AdminLTE = TRUE)
-  
+  initialize_helper()
+  #
   tisefka <- callModule(module= ghred_tisefka_server, id = "SA_ML_data_upload")
   
   tisefka_inu <- callModule(module = SA_ML_features_server, id = "SA_ML_features", tisefka = reactive({tisefka()$tisefka_tizegzawin}))

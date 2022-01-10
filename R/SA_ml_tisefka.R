@@ -110,7 +110,10 @@ SA_ML_preprocessing_server <- function(input, output, session,tisefka,div_width 
                               label = "Select ML Algorithm",
                               multiple = FALSE,
                               choices = algorithm_choices
-    )
+    )%>%shinyhelper::helper(type = "markdown",buttonLabel="Got it",
+                            icon = shiny::icon("fas fa-lightbulb"),
+                            colour = "brown",
+                            content = "ml_algorithms")
   })
   #----------- select ML type
   output$ml_type <- renderUI({
@@ -120,7 +123,10 @@ SA_ML_preprocessing_server <- function(input, output, session,tisefka,div_width 
                               label = "Select ML type:",
                               multiple = FALSE,
                               choices = ml_types
-    )
+    )%>%shinyhelper::helper(type = "markdown",buttonLabel="Got it",
+                            icon = shiny::icon("fas fa-lightbulb"),
+                            colour = "brown",
+                            content = "ml_types")
   })
 
 

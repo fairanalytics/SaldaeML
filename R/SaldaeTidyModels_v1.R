@@ -16,10 +16,10 @@ SA_ml_performance_f <- function(SA_test_predicted = NULL,pred_mode = "classifica
   
   if(pred_mode == "classification"){
     SA_ml_perf <- list()
-      # yardstick::roc_auc(data = SA_test_predicted,truth = test_label, test_pred,estimator ="hand_till")
-      # pred <- ROCR::prediction(SA_test_predicted$test_label,SA_test_predicted$test_label)
+    SA_test_predicted%>%mutate_all(as.numeric)%>%
+      yardstick::roc_auc(data = .,truth = test_label, estimate = test_pred,estimator ="binary")
+       pred <- ROCR::prediction(SA_test_predicted$test_label,SA_test_predicted$test_label)
     # perf <- performance(SA_test_predicted,"","test_pred")
-    
     SA_ml_perf[["accuracy"]] <- SA_test_predicted%>% yardstick::accuracy(test_label, test_pred)
     
    
@@ -27,7 +27,7 @@ SA_ml_performance_f <- function(SA_test_predicted = NULL,pred_mode = "classifica
     
     temp_vect <- data.frame(temp_vect$table)%>%dplyr::mutate(perf = Prediction == Truth)
     SA_ml_perf[["confusion_matrix"]]  <- temp_vect
-    SA_ml_perf[["perf_plot"]]      <- temp_vect%>%plotly::plot_ly(x = ~Truth ,y = ~Freq ,color =  ~perf, type="bar")%>%
+    SA_ml_perf[["perf_plot"]]      <- temp_vect%>%plotly::plot_ly(x = ~Truth ,y = ~Freq ,color =  ~perf, colors = c("#D95F02","#1B9E77"), type="bar")%>%
       plotly::config(displaylogo = F)
   }
   if(pred_mode == "regression"){
@@ -228,16 +228,20 @@ SA_ml_engine_lm1 <- function(tisefka = tisefka, target_variable = NULL, ml_algo=
      dplyr::mutate(delta = test_label - test_pred,rel_delta = (test_label - test_pred)/test_label)%>%
      dplyr::mutate(rel_delta = round(rel_delta* 100,2)) 
  }
-  SA_test_predicted2<<-SA_test_predicted
   if(pred_mode == "classification"){
+# 
+#     target_levels <- levels(tisefka_iheggan$train_tisefka%>%pull(!!target_variable))
+#     SA_test_predicted$test_pred <- factor(SA_test_predicted$test_pred, levels = target_levels)
     
-    target_levels <- levels(tisefka_iheggan$train_tisefka%>%pull(!!target_variable))
-    SA_test_predicted$test_pred <- factor(SA_test_predicted$test_pred, levels = target_levels)
+    # <- 
+    # bivariate_val %>%
+    # bind_cols(
+    #   predict(nnet_fit, new_data = val_normalized),
+    #   predict(nnet_fit, new_data = val_normalized, type = "prob")
+    # )
   }
-  
-  #'
-  #' model performances evaluation
-  #'
+
+
 
   ml_output <- list()
 

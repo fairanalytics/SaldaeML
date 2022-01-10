@@ -123,7 +123,7 @@ SA_ML_features_server <- function(input, output, session,tisefka,div_width = "co
                           column(width = 2,
                                  uiOutput(session$ns("select_element"))
                           ),
-                          column(width = 2,
+                          column(width = 3,
                                  uiOutput(session$ns("generate_features"))
                           )
                         )
@@ -138,9 +138,9 @@ SA_ML_features_server <- function(input, output, session,tisefka,div_width = "co
       style = "material-flat",
       color = "success",
       label = "Generate Features")%>%shinyhelper::helper(type = "markdown",buttonLabel="Got it",
-                                                         # icon= shiny::icon("fa-lightbulb"),
-                                                         colour = "green",
-                                                         content = "sald_forecast")
+                                                          icon = shiny::icon("fas fa-lightbulb"),
+                                                         colour = "brown",
+                                                         content = "feature_engineering")
   })
 
 #----------- select target variable

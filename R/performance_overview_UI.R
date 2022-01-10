@@ -32,7 +32,10 @@ SA_tisefka_overview_server <- function(input, output, session,tisefka) {
       shinydashboard::infoBoxOutput(session$ns("SA_overview2"))
       
 
-    )
+    )%>%shinyhelper::helper(type = "markdown",buttonLabel="Got it",
+                            icon = shiny::icon("fas fa-lightbulb"),
+                            colour = "brown",
+                            content = "ml_metrics")
   })
   output$SA_overview1 <- shinydashboard::renderInfoBox({
     req(tisefka())
