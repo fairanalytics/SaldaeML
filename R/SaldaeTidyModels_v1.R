@@ -16,10 +16,10 @@ SA_ml_performance_f <- function(SA_test_predicted = NULL,pred_mode = "classifica
   
   if(pred_mode == "classification"){
     SA_ml_perf <- list()
-    SA_test_predicted%>%mutate_all(as.numeric)%>%
-      yardstick::roc_auc(data = .,truth = test_label, estimate = test_pred,estimator ="binary")
-       pred <- ROCR::prediction(SA_test_predicted$test_label,SA_test_predicted$test_label)
-    # perf <- performance(SA_test_predicted,"","test_pred")
+    # SA_test_predicted%>%mutate_all(as.numeric)%>%
+    #   yardstick::roc_auc(data = .,truth = test_label, estimate = test_pred,estimator ="binary")
+    #    pred <- ROCR::prediction(SA_test_predicted$test_label,SA_test_predicted$test_label)
+    # # perf <- performance(SA_test_predicted,"","test_pred")
     SA_ml_perf[["accuracy"]] <- SA_test_predicted%>% yardstick::accuracy(test_label, test_pred)
     
    
