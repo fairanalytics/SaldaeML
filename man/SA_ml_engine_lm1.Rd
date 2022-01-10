@@ -13,14 +13,15 @@ SA_ml_engine_lm1(
   explaining_variable = NULL,
   train_prop = 0.75,
   sa_scale = FALSE,
-  pred_mode = "regression"
+  pred_mode = "regression",
+  rand_samp = TRUE
 )
 }
 \description{
 prepare a recipe
 embed the recipe to the engine
 fit the model
-predict
+predict for test set
 }
 \details{
 model performances evaluation

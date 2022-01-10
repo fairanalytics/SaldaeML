@@ -4,7 +4,12 @@
 \alias{SA_tisefka_bdu}
 \title{Saldae ML model builder}
 \usage{
-SA_tisefka_bdu(tisefka = NULL, train_prop = 0.8, strat_class = NULL)
+SA_tisefka_bdu(
+  tisefka = NULL,
+  train_prop = 0.8,
+  strat_class = NULL,
+  rand_sample = NULL
+)
 }
 \arguments{
 \item{train_prop}{training proportion}

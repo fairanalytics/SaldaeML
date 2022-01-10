@@ -64,9 +64,10 @@ SA_ml_feature_generation <- function(tisefka= NULL ){
 }
 
 sekned_tisefka_features <- function(tisefka_features = NULL){
+  
   my_var <- colnames(tisefka_features)[1]
   x <- list(title =  my_var)
-  feat_plot <- tisefka_features%>%plotly::plot_ly( x = ~base::get(my_var),type = "histogram")%>%
+  feat_plot <- tisefka_features%>%plotly::plot_ly( x = ~base::get(my_var), color  = ~base::get(my_var),type = "histogram")%>%
     plotly::layout(xaxis = x)%>%plotly::config(displaylogo = F)
   return(feat_plot)
 }

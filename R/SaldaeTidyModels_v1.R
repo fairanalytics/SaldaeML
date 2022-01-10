@@ -20,7 +20,7 @@ SA_ml_performance_f <- function(SA_test_predicted = NULL,pred_mode = "classifica
       # pred <- ROCR::prediction(SA_test_predicted$test_label,SA_test_predicted$test_label)
     # perf <- performance(SA_test_predicted,"","test_pred")
     
-    SA_ml_perf[["accuracy"]] <- SA_test_predicted %>% yardstick::accuracy(test_label, test_pred)
+    SA_ml_perf[["accuracy"]] <- SA_test_predicted%>% yardstick::accuracy(test_label, test_pred)
     
    
     temp_vect <-  SA_test_predicted %>% yardstick::conf_mat(truth = test_label, test_pred)
@@ -53,16 +53,26 @@ SA_ml_performance_f <- function(SA_test_predicted = NULL,pred_mode = "classifica
 #' @export
 
 
-SA_tisefka_bdu  <- function(tisefka = NULL , train_prop = 0.8,strat_class = NULL ){
-  # Fix the random numbers by setting the seed
-  # This enables the analysis to be reproducible when random numbers are used
-  set.seed(555)
-  # Put 3/4 of the data into the training set
-  tisefka_split <- rsample::initial_split(tisefka, prop = train_prop,strata = strat_class)
-
-  # Create data frames for the two sets:
-  train_tisefka <- rsample::training(tisefka_split)
-  test_tisefka  <- rsample::testing(tisefka_split)
+SA_tisefka_bdu  <- function(tisefka = NULL , train_prop = 0.8,strat_class = NULL, rand_sample = NULL ){
+  
+  if(rand_sample == TRUE){
+    # Fix the random numbers by setting the seed
+    # This enables the analysis to be reproducible when random numbers are used
+    set.seed(555)
+    # Put 3/4 of the data into the training set
+    tisefka_split <- rsample::initial_split(tisefka, prop = train_prop,strata = all_of(strat_class))
+    
+    # Create data frames for the two sets:
+    train_tisefka <- rsample::training(tisefka_split)
+    test_tisefka  <- rsample::testing(tisefka_split)
+  }else{
+    
+    train_prop <- floor(train_prop * nrow(tisefka))
+    train_tisefka <- tisefka%>%head(train_prop)
+    test_tisefka <- tisefka%>%tail(-train_prop)
+    
+  }
+  
   output_tisefka <- list()
   output_tisefka[["train_tisefka"]] <- train_tisefka
   output_tisefka[["test_tisefka"]] <- test_tisefka
@@ -76,7 +86,7 @@ SA_formula_generator <- function(target_variable = NULL , explaining_variable = 
 }
 
 
-SA_ml_engine_lm1 <- function(tisefka = tisefka, target_variable = NULL, ml_algo= "linear regression",explaining_variable = NULL ,train_prop=0.75,sa_scale = FALSE,pred_mode = "regression"){
+SA_ml_engine_lm1 <- function(tisefka = tisefka, target_variable = NULL, ml_algo= "linear regression",explaining_variable = NULL ,train_prop=0.75,sa_scale = FALSE,pred_mode = "regression", rand_samp = TRUE){
   tisefka <- tisefka%>%dplyr::mutate_if(is.character, as.factor)
   tune_parameters<- FALSE
   #' prepare data : split
@@ -85,8 +95,18 @@ SA_ml_engine_lm1 <- function(tisefka = tisefka, target_variable = NULL, ml_algo=
     tisefka <- tisefka%>%dplyr::select_if(var_classes$is_numeric)
     explaining_variable <- explaining_variable[sapply(explaining_variable,function(x)x%in%colnames(tisefka))]
   }
+  
+  # convert target variable into factor
+  if(pred_mode == "classification"){
+    tisefka <- tisefka%>%dplyr::mutate_at(target_variable , as.factor)
+  }
+  
+  
+# split dataset 
+  tisefka_iheggan  <- SA_tisefka_bdu(tisefka  = tisefka , train_prop = train_prop , strat_class = NULL, rand_samp = rand_samp)
+  
 
-  tisefka_iheggan  <- SA_tisefka_bdu(tisefka  = tisefka , train_prop = train_prop , strat_class = NULL)
+  
   #' initializing the models
   if(ml_algo == "linear regression"){
     SA_lm_mod <-
@@ -123,12 +143,9 @@ SA_ml_engine_lm1 <- function(tisefka = tisefka, target_variable = NULL, ml_algo=
     SA_ML_folds <- rsample::vfold_cv(tisefka_iheggan$train_tisefka)
   }
 
-
-
   #' prepare formula
   #'
   ml_formula <- SA_formula_generator(target_variable = target_variable , explaining_variable = explaining_variable)
-
   #' prepare a recipe
 
   tisefka_rec <-    recipes::recipe(ml_formula, data = tisefka_iheggan$train_tisefka)
@@ -189,9 +206,8 @@ SA_ml_engine_lm1 <- function(tisefka = tisefka, target_variable = NULL, ml_algo=
     SA_ml_wflow %>%
     parsnip::fit(data = tisefka_iheggan$train_tisefka) 
 
-  
-  #' predict
-  SA_test_predicted <- predict(SA_lm_fit, tisefka_iheggan$test_tisefka) %>%
+  #' predict for test set 
+  SA_test_predicted <- predict(SA_lm_fit, new_data = tisefka_iheggan$test_tisefka) %>%
     dplyr::bind_cols(tisefka_iheggan$test_tisefka %>% dplyr::select(!!target_variable))
   
   
@@ -212,6 +228,12 @@ SA_ml_engine_lm1 <- function(tisefka = tisefka, target_variable = NULL, ml_algo=
      dplyr::mutate(delta = test_label - test_pred,rel_delta = (test_label - test_pred)/test_label)%>%
      dplyr::mutate(rel_delta = round(rel_delta* 100,2)) 
  }
+  SA_test_predicted2<<-SA_test_predicted
+  if(pred_mode == "classification"){
+    
+    target_levels <- levels(tisefka_iheggan$train_tisefka%>%pull(!!target_variable))
+    SA_test_predicted$test_pred <- factor(SA_test_predicted$test_pred, levels = target_levels)
+  }
   
   #'
   #' model performances evaluation

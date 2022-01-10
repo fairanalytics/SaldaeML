@@ -86,7 +86,7 @@ SA_ML_preprocessing_server <- function(input, output, session,tisefka,div_width 
                                  uiOutput(session$ns("tisefka_train_split"))
                           ),
                           column(width = 1,
-                                 uiOutput(session$ns("tisefka_train_sampling"))
+                                 uiOutput(session$ns("tisefka_rand_sampling"))
                           ),
                           column(width = 2,
                                  uiOutput(session$ns("ml_type"))
@@ -133,9 +133,9 @@ SA_ML_preprocessing_server <- function(input, output, session,tisefka,div_width 
  
 # split with or withou resampling
  
-output$tisefka_train_sampling <- renderUI({
+output$tisefka_rand_sampling <- renderUI({
   req(tisefka_final())
-  checkboxInput(inputId = session$ns("tisefka_train_sampling"), label = "Random Sampling")
+  checkboxInput(inputId = session$ns("tisefka_rand_sampling"), label = "Random Sampling")
 })
 # train model trigger
   output$train_ml_model <- renderUI({
@@ -159,7 +159,7 @@ output$tisefka_train_sampling <- renderUI({
     explaining_variable <- colnames(tisefka_final())
     explaining_variable <- explaining_variable[explaining_variable != target_variable()]
 
-    ML_trained_model <- SA_ml_engine_lm1(tisefka = tisefka_final(),target_variable = target_variable(),train_prop= input$tisefka_train_split/100,
+    ML_trained_model <- SA_ml_engine_lm1(tisefka = tisefka_final(),target_variable = target_variable(),train_prop= input$tisefka_train_split/100,rand_samp = input$tisefka_rand_sampling,
                                          explaining_variable = explaining_variable,ml_algo = tolower(input$ml_algorithm) ,pred_mode =tolower(input$ml_type))
     #ML_trained_model2<<- ML_trained_model
     #ML_trained_model$ml_report <- SA_ml_report_main(ML_trained_model2$SA_lm_fit$fit$fit)
