@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1619794591055.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "17D1CB7B",
+    "lastKnownWriteTime" : 1619794606,
+    "last_content_update" : 1619794606244,
+    "path" : "~/Saldae_Analytics/SaldaePackages/SaldAutoML/dev/02_dev.R",
+    "project_path" : "dev/02_dev.R",
+    "properties" : {
+        "cursorPosition" : "39,23",
+        "scrollLine" : "31"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

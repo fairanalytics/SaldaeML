@@ -1,0 +1,512 @@
+x <- x%>%dplyr::mutate(x_abs = abs(x),x_p2 = x**2)
+if(all(x>=0))x <- x%>%dplyr::mutate(x_sqrt = sqrt(x))
+if(all(x>0))x <- x%>%dplyr::mutate(x_log = log(x))
+}else{
+x <- x%>%dplyr::as.tbl()
+}
+x
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+View(SA_test_predicted2)
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+timeInput
+install.packages("shinyTime")
+?shinyTime::timeInput
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+aa$target_variable
+aa$explaining_variables
+?tidyr::separate
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+aa$var_factors
+aa$target_variable
+aa$explaining_variables
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+?shinyTime::timeInput
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+tisefka2
+Sys.time()
+strptime()
+strptime("00:00:00")
+strptime("00:00:00","%T")
+tisefka2
+?shinyTime::timeInput
+format(Sys.time(),"%H:%M:%S")
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+tisefka2
+hms_vars <- names(explaining_variables())
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+tisefka_timaynutin2
+time_hms_vars2
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+time_hms_vars2
+tisefka_timaynutin <- tisefka_timaynutin2
+tisefka_timaynutin
+time_hms_vars
+time_hms_vars <- time_hms_vars2
+aa <- tisefka_timaynutin%>%purrr::lmap_at(!!time_hms_vars,~format(.x,"%H:%M:%S"))%>%
+}
+aa <- tisefka_timaynutin%>%purrr::lmap_at(!!time_hms_vars,~format(.x,"%H:%M:%S"))
+time_hms_vars
+aa <- tisefka_timaynutin%>%purrr::map_at(!!time_hms_vars,~format(.x,"%H:%M:%S"))
+aa <- tisefka_timaynutin%>%purrr::map_at(vars(time_hms_vars),~format(.x,"%H:%M:%S"))
+aa <- tisefka_timaynutin%>%purrr::map_at(names(time_hms_vars),~format(.x,"%H:%M:%S"))
+aa$time
+aa$time
+names(time_hms_vars)
+aa <- tisefka_timaynutin%>%purrr::lmap_at(names(time_hms_vars),~format(.x,"%H:%M:%S"))
+aa$time
+aa$time
+format(aa$time,"%H")
+aa <- time_hms_vars%>%purrr::map_at(~format(tisefka_timaynutin[[.x]],"%H:%M:%S"))
+tisefka_timaynutin <- tisefka_timaynutin2
+aa <- time_hms_vars%>%purrr::map_at(~format(tisefka_timaynutin[[.x]],"%H:%M:%S"))
+aa <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[[.x]],"%H:%M:%S"))
+aa$hms
+time_hms_vars2
+aa <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[[.x]],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)
+aa
+tisefka_timaynutin <- do.call(data.frame,tisefka_timaynutin)
+tisefka_timaynutin
+tisefka_timaynutin
+bb <- tisefka_timaynutin%>%mutate_at(names(time_hms_vars),format(.x,"%H:%M:%S"))
+time_hms_vars
+bb <- tisefka_timaynutin%>%mutate_at(vars(time_hms_vars),format(.x,"%H:%M:%S"))
+bb <- tisefka_timaynutin%>%mutate_at(vars(time_hms_vars),format(.,"%H:%M:%S"))
+aa <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)
+aa
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()
+hms_input
+tisefka_timaynutin
+time_hms_vars
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()
+tisefka_timaynutin[,time_hms_vars]<- hms_input
+hms_input
+tisefka_timaynutin
+tisefka_timaynutin <- SA_ml_feature_generation(tisefka = tisefka_timaynutin)
+hms_input
+hms_input
+hms_input  <- time_hms_vars%>%purrr::map(~as.character(format(tisefka_timaynutin[,.x],"%H:%M:%S")))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()
+tisefka_timaynutin <- tisefka_timaynutin2
+tisefka_timaynutin <- do.call(data.frame,tisefka_timaynutin)
+if(length(time_hms_vars)>0){
+hms_input  <- time_hms_vars%>%purrr::map(~as.character(format(tisefka_timaynutin[,.x],"%H:%M:%S")))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()
+tisefka_timaynutin[,time_hms_vars]<- hms_input
+}
+tisefka_timaynutin
+if(length(time_hms_vars)>0){
+hms_input  <- time_hms_vars%>%purrr::map(~as.character(format(tisefka_timaynutin[,.x],"%H:%M:%S")))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()
+tisefka_timaynutin[,time_hms_vars]<- hms_input
+}
+tisefka_timaynutin <- SA_ml_feature_generation(tisefka = tisefka_timaynutin)
+tisefka_timaynutin
+tisefka_timaynutin$time
+paste(tisefka_timaynutin$time)
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()%>%
+mutate_at(is.factor,as.character())
+tisefka_timaynutin <- tisefka_timaynutin2
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()%>%
+mutate_at(is.factor,as.character())
+tisefka_timaynutin
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)
+tisefka_timaynutin
+tisefka_timaynutin <- do.call(data.frame,tisefka_timaynutin)
+if(length(time_hms_vars)>0){
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()%>%
+mutate_at(is.factor,as.character())
+tisefka_timaynutin[,time_hms_vars]<- hms_input
+}
+hms_input
+tisefka_timaynutin
+if(length(time_hms_vars)>0){
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()%>%
+mutate_at(is.factor,as.character)
+tisefka_timaynutin[,time_hms_vars]<- hms_input
+}
+time_hms_vars
+hms_input
+time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()%>%
+mutate_at(is.factor,as.character)
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()
+hms_input
+hms_input  <- time_hms_vars%>%purrr::map(~format(tisefka_timaynutin[,.x],"%H:%M:%S"))%>%
+stats::setNames(time_hms_vars)%>%data.frame(check.names = FALSE)%>%dplyr::as.tbl()%>%
+dplyr::mutate_if(is.factor,as.character)
+hms_input
+tisefka_timaynutin[,time_hms_vars]<- hms_input
+tisefka_timaynutin <- SA_ml_feature_generation(tisefka = tisefka_timaynutin)
+tisefka_timaynutin
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+tune
+library("tidymodels")
+?tidymodels
+?tune
+tree_grid
+grid_regular
+tree_grid <- tune::grid_regular(tune::cost_complexity(),
+tune::tree_depth(),
+levels = 5)
+tree_grid <- dials::grid_regular(tune::cost_complexity(),
+tune::tree_depth(),
+levels = 5)
+tree_grid <- dials::grid_regular(cost_complexity(),
+tree_depth(),
+levels = 5)
+tree_grid
+cost_complexity
+tree_grid <- dials::grid_regular(dials::cost_complexity(),
+dials::tree_depth(),
+levels = 5)
+tree_grid
+dim(tree_grid)
+model_grid_search <- dials::grid_regular(dials::cost_complexity(),
+dials::tree_depth(),
+levels = 5)
+cell_train
+tisefka <- economics
+target_variable <- "pop"
+explaining_variable <- "date"
+train_prop=0.75
+sa_scale = FALSE
+pred_mode = "regression"
+tisefka <- tisefka%>%dplyr::mutate_if(is.character, as.factor)
+library(dplyr)
+tisefka <- tisefka%>%dplyr::mutate_if(is.character, as.factor)
+tisefka
+tisefka_iheggan  <- SA_tisefka_bdu(tisefka  = tisefka , train_prop = train_prop , strat_class = NULL)
+source('~/Saldae_Analytics/SaldaePackages/SaldAutoML/R/SaldaeTidyModels_v1.R')
+tisefka_iheggan  <- SA_tisefka_bdu(tisefka  = tisefka , train_prop = train_prop , strat_class = NULL)
+tisefka_iheggan
+SA_lm_mod <-
+parsnip::decision_tree(cost_complexity = tune::tune(),
+tree_depth = tune::tune())%>%
+parsnip::set_engine("rpart") %>%
+parsnip::set_mode(pred_mode)
+model_grid_search <- dials::grid_regular(dials::cost_complexity(),
+dials::tree_depth(),
+levels = 5)
+vfold_cv
+library(tidymodels)
+vfold_cv
+?vfold_cv
+cell_folds <- rsample::vfold_cv(tisefka_iheggan$train_tisefka)
+SA_ML_folds <- rsample::vfold_cv(tisefka_iheggan$train_tisefka)
+SA_ML_folds
+tune_grid
+#' fit the model
+SA_lm_fit <-
+SA_ml_wflow %>%
+parsnip::fit(data = tisefka_iheggan$train_tisefka)%>%
+tune::tune_grid(
+resamples = SA_ML_folds,
+grid = model_grid_search
+)
+#' prepare formula
+#'
+ml_formula <- SA_formula_generator(target_variable = target_variable , explaining_variable = explaining_variable)
+tisefka_rec <-    recipes::recipe(ml_formula, data = tisefka_iheggan$train_tisefka)
+if(sa_scale == TRUE){
+tisefka_rec <- tisefka_rec%>%
+# recipes::step_other(Neighborhood)%>%
+recipes::step_dummy(recipes::all_nominal()) %>%
+recipes::step_center(recipes::all_predictors()) %>%
+recipes::step_scale(recipes::all_predictors())
+}
+#' embed the recipe to the engine
+SA_ml_wflow <-
+workflows::workflow() %>%
+workflows::add_model(SA_lm_mod) %>%
+workflows::add_recipe(tisefka_rec)
+#' fit the model
+SA_lm_fit <-
+SA_ml_wflow %>%
+parsnip::fit(data = tisefka_iheggan$train_tisefka)%>%
+tune::tune_grid(
+resamples = SA_ML_folds,
+grid = model_grid_search
+)
+model_grid_search
+dim(model_grid_search)
+SA_lm_fit <-
+SA_ml_wflow %>%
+tune::tune_grid(
+resamples = SA_ML_folds,
+grid = model_grid_search
+)
+SA_lm_fit
+SA_lm_fit %>%
+collect_metrics()
+CV_results <- SA_lm_fit %>%
+collect_metrics()
+View(CV_results)
+SA_lm_fit %>%
+collect_metrics() %>%
+mutate(tree_depth = factor(tree_depth)) %>%
+ggplot(aes(cost_complexity, mean, color = tree_depth)) +
+geom_line(size = 1.5, alpha = 0.6) +
+geom_point(size = 2) +
+facet_wrap(~ .metric, scales = "free", nrow = 2) +
+scale_x_log10(labels = scales::label_number()) +
+scale_color_viridis_d(option = "plasma", begin = .9, end = 0)
+scale_x_log10
+scale_color_viridis_d
+collect_metrics
+?collect_metrics
+tree_depth
+SA_lm_fit %>%
+tune::collect_metrics() %>%
+mutate(tree_depth = factor(tree_depth))
+SA_lm_fit %>%
+tune::collect_metrics() %>%
+mutate(tree_depth = factor(tree_depth)) %>%
+ggplot(aes(cost_complexity, mean, color = tree_depth))
+SA_lm_fit %>%
+tune::collect_metrics() %>%
+mutate(tree_depth = factor(tree_depth)) %>%
+ggplot(aes(cost_complexity, mean, color = tree_depth)) +
+geom_line(size = 1.5, alpha = 0.6) +
+geom_point(size = 2)
+SA_lm_fit %>%
+tune::collect_metrics() %>%
+mutate(tree_depth = factor(tree_depth)) %>%
+ggplot(aes(cost_complexity, mean, color = tree_depth)) +
+geom_line(size = 1.5, alpha = 0.6) +
+geom_point(size = 2) +
+facet_wrap(~ .metric, scales = "free", nrow = 2)
+SA_lm_fit %>%
+tune::collect_metrics() %>%
+mutate(tree_depth = factor(tree_depth)) %>%
+ggplot(aes(cost_complexity, mean, color = tree_depth)) +
+geom_line(size = 1.5, alpha = 0.6) +
+geom_point(size = 2) +
+facet_wrap(~ .metric, scales = "free", nrow = 2) +
+scale_x_log10(labels = scales::label_number())
+label_number
+remove.packages("scales")
+install.packages("scales")
+install.packages("scales")
+SA_lm_fit %>%
+tune::collect_metrics() %>%
+mutate(tree_depth = factor(tree_depth)) %>%
+ggplot(aes(cost_complexity, mean, color = tree_depth)) +
+geom_line(size = 1.5, alpha = 0.6) +
+geom_point(size = 2) +
+facet_wrap(~ .metric, scales = "free", nrow = 2) +
+scale_x_log10() +
+scale_color_viridis_d(option = "plasma", begin = .9, end = 0)
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+library("bs4dash")
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+bs4Dash::tabBox
+?bs4Dash::tabBox
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+install.packages("shinybusy")
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+?shinybusy::add_busy_bar

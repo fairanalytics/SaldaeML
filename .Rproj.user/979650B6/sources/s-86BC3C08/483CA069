@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1619632073752.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "483CA069",
+    "lastKnownWriteTime" : 1604604016,
+    "last_content_update" : 1604604016,
+    "path" : "~/Saldae_Analytics/SaldaePackages/SaldAutoML/R/SaldaeTidyModels_v1.R",
+    "project_path" : "R/SaldaeTidyModels_v1.R",
+    "properties" : {
+        "cursorPosition" : "222,30",
+        "scrollLine" : "212"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

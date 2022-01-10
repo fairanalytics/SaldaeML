@@ -1,0 +1,43 @@
+Package: SaldAutoML
+Title: SmartML
+Version: 0.0.0.9000
+Authors@R: person('Farid', 'Azouaou', email = 'AUTHOR@MAIL.COM', role = c('cre', 'aut'))
+Description: ML learning package inteded for non code free usage
+License: MIT + file LICENSE
+Imports: 
+    config,
+    golem,
+    shiny,
+    dplyr,
+    shinydashboard,
+    shinydashboardPlus,
+    workflows,
+    recipes,
+    rsample,
+    yardstick,
+    dlookr,
+    parsnip,
+    purrr,
+    DT,
+    janitor,
+    rstudioapi,
+    shinyWidgets,
+    shinyhelper,
+    plotly,
+    jsonlite,
+    lubridate,
+    rhandsontable,
+    readxl,
+    timetk,
+    htmlwidgets,
+    readr,
+    pkgload,
+    ranger,
+    kernlab,
+    apputils,
+    shinybusy,
+    zoo,
+    magrittr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
