@@ -4,8 +4,11 @@
 \alias{SA_ML_features_UI}
 \title{Saldae Dashboard Module UI (analytics)}
 \usage{
-SA_ML_features_UI(id, mod_title = NULL,
-  div_width = "col-xs-12 col-sm-6 col-md-8")
+SA_ML_features_UI(
+  id,
+  mod_title = NULL,
+  div_width = "col-xs-12 col-sm-6 col-md-8"
+)
 }
 \arguments{
 \item{id}{server module ID}

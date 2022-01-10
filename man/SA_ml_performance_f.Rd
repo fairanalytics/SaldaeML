@@ -4,8 +4,11 @@
 \alias{SA_ml_performance_f}
 \title{Saldae Performance evaluation function}
 \usage{
-SA_ml_performance_f(SA_test_predicted = NULL,
-  pred_mode = "classification", target_variable = NULL)
+SA_ml_performance_f(
+  SA_test_predicted = NULL,
+  pred_mode = "classification",
+  target_variable = NULL
+)
 }
 \arguments{
 \item{SA_test_predicted}{data frame containg predicted values and benchmark values}

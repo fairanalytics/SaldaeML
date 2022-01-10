@@ -6,9 +6,15 @@
 initializing the models
 prepare formula}
 \usage{
-SA_ml_engine_lm1(tisefka = tisefka, target_variable = NULL,
-  ml_algo = "linear regression", explaining_variable = NULL,
-  train_prop = 0.75, sa_scale = FALSE, pred_mode = "regression")
+SA_ml_engine_lm1(
+  tisefka = tisefka,
+  target_variable = NULL,
+  ml_algo = "linear regression",
+  explaining_variable = NULL,
+  train_prop = 0.75,
+  sa_scale = FALSE,
+  pred_mode = "regression"
+)
 }
 \description{
 prepare a recipe

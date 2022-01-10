@@ -4,8 +4,7 @@
 \alias{data_diagnosis_f}
 \title{Saldae : data diagnosis}
 \usage{
-data_diagnosis_f(tisefka = NULL, categoricals_ukud = NULL,
-  ukud_unit = NULL)
+data_diagnosis_f(tisefka = NULL, categoricals_ukud = NULL, ukud_unit = NULL)
 }
 \arguments{
 \item{tisefka}{raw data}

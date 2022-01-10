@@ -4,8 +4,11 @@
 \alias{data_exploration_view}
 \title{Reactive Data Exploration including statistics data quality and graphic output.}
 \usage{
-data_exploration_view(tisefka = NULL, tisefka_report = NULL,
-  numeric_variables = NULL)
+data_exploration_view(
+  tisefka = NULL,
+  tisefka_report = NULL,
+  numeric_variables = NULL
+)
 }
 \arguments{
 \item{tisefka}{Raw data(row names as date)}

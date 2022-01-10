@@ -4,8 +4,13 @@
 \alias{SA_ML_preprocessing_server}
 \title{Saldae Dashboard Module Server Analytics}
 \usage{
-SA_ML_preprocessing_server(input, output, session, tisefka,
-  div_width = "col-xs-6 col-sm-12 col-md-6")
+SA_ML_preprocessing_server(
+  input,
+  output,
+  session,
+  tisefka,
+  div_width = "col-xs-6 col-sm-12 col-md-6"
+)
 }
 \arguments{
 \item{input}{input shinydashboard elements containing information to use for output generation}

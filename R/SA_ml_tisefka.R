@@ -85,6 +85,9 @@ SA_ML_preprocessing_server <- function(input, output, session,tisefka,div_width 
                           column(width = 2,
                                  uiOutput(session$ns("tisefka_train_split"))
                           ),
+                          column(width = 1,
+                                 uiOutput(session$ns("tisefka_train_sampling"))
+                          ),
                           column(width = 2,
                                  uiOutput(session$ns("ml_type"))
                           ),
@@ -121,12 +124,19 @@ SA_ML_preprocessing_server <- function(input, output, session,tisefka,div_width 
   })
 
 
-
-  output$tisefka_train_split <- renderUI({
+ # Train/Test split 
+ output$tisefka_train_split <- renderUI({
     req(tisefka_final())
      sliderInput(inputId = session$ns("tisefka_train_split"),label =  "Training Set split in %:",
                  min = 40, max = 100, value = 75)
   })
+ 
+# split with or withou resampling
+ 
+output$tisefka_train_sampling <- renderUI({
+  req(tisefka_final())
+  checkboxInput(inputId = session$ns("tisefka_train_sampling"), label = "Random Sampling")
+})
 # train model trigger
   output$train_ml_model <- renderUI({
     req(tisefka_final())

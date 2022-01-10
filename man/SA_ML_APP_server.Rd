@@ -4,8 +4,7 @@
 \alias{SA_ML_APP_server}
 \title{Saldae Dashboard Module Server Analytics}
 \usage{
-SA_ML_APP_server(input, output, session, tisefka = NULL,
-  create_flag = TRUE)
+SA_ML_APP_server(input, output, session, tisefka = NULL, create_flag = TRUE)
 }
 \arguments{
 \item{input}{input shinydashboard elements containing information to use for output generation}

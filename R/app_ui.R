@@ -25,7 +25,7 @@ ML_ui <- function(request) {
                                        )),
       body = shinydashboard::dashboardBody(
         shiny.info::info_panel(
-          shiny.info::powered_by("Saldae Analytics", link = "https://www.saldaeanalytics.com/"),
+          shiny.info::powered_by("Fair Analytics", link = "https://www.fairanalytics.net/"),
           position = "bottom right"
         ),
         shinybusy::add_busy_bar(color = "orange",centered = TRUE,height = "10px" ),
